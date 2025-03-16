@@ -1,0 +1,1287 @@
+/* Record2.css - US Army Theme for Incident Tracker */
+
+/* Base styles and variables */
+:root {
+  --army-green-dark: #4b5320;
+  --army-green: #5a6324;
+  --army-green-light: #6b7a2d;
+  --army-tan: #c6b89e;
+  --army-tan-light: #d8cdb6;
+  --army-brown: #5d4c41;
+  --army-red: #8b0000;
+  --army-yellow: #ffd700;
+  --army-blue: #1a3c5e;
+  --text-light: #f5f5f5;
+  --text-dark: #212121;
+  --shadow-standard: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-large: 0 6px 12px rgba(0, 0, 0, 0.4);
+  --border-radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--army-tan-light);
+  color: var(--text-dark);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Main container */
+.incident-tracker-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: url("/api/placeholder/1600/200") no-repeat top center;
+  background-size: contain;
+  background-color: var(--army-tan-light);
+}
+
+/* Header styles */
+.header-section {
+  background-color: var(--army-green-dark);
+  color: var(--text-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-standard);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-shield {
+  color: var(--army-yellow);
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.date-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Button styles */
+button {
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-standard);
+  text-transform: uppercase;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-report {
+  background-color: var(--army-blue);
+  color: var(--text-light);
+}
+
+.btn-emergency {
+  background-color: var(--army-red);
+  color: var(--text-light);
+}
+
+.btn-read-more,
+.btn-view-zone,
+.btn-view-patrol {
+  background-color: var(--army-green);
+  color: var(--text-light);
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-request-backup {
+  background-color: var(--army-red);
+  color: var(--text-light);
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.btn-cancel {
+  background-color: var(--army-tan);
+  color: var(--text-dark);
+}
+
+.btn-request {
+  background-color: var(--army-green);
+  color: var(--text-light);
+}
+
+.btn-record,
+.btn-alert,
+.btn-print {
+  flex: 1;
+  background-color: var(--army-green);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.btn-alert {
+  background-color: var(--army-red);
+}
+
+.btn-patrol-routes,
+.btn-incident-markers,
+.btn-print-map {
+  background-color: var(--army-green-light);
+  color: var(--text-light);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  box-shadow: none;
+  padding: 0.5rem;
+}
+
+.close-button:hover {
+  color: var(--army-yellow);
+  box-shadow: none;
+}
+
+/* Dashboard container */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .dashboard-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Section styles */
+.incidents-section,
+.red-zones-section,
+.patrol-section {
+  background-color: var(--army-tan);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-standard);
+}
+
+.section-title {
+  color: var(--army-green-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid var(--army-green-dark);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon-alert,
+.icon-users {
+  color: var(--army-red);
+}
+
+/* Card styles */
+.incident-card,
+.red-zone-card,
+.patrol-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-standard);
+  margin-bottom: 1.5rem;
+}
+
+/* Incident card */
+.incident-header {
+  padding: 1rem;
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incident-header.resolved {
+  background-color: var(--army-green);
+}
+
+.incident-header.active {
+  background-color: var(--army-red);
+}
+
+.incident-title {
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+}
+
+.icon-check {
+  color: var(--army-yellow);
+}
+
+.incident-details {
+  padding: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.detail-icon {
+  color: var(--army-green);
+}
+
+.officer-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.officer-label {
+  margin-bottom: 0.5rem;
+  color: var(--army-brown);
+}
+
+.officer-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.officer-icon {
+  color: var(--army-blue);
+}
+
+/* CCTV badge */
+.cctv-badge {
+  display: inline-block;
+  background-color: var(--army-blue);
+  color: var(--text-light);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Red Zone card */
+.zone-header {
+  padding: 1rem;
+  color: var(--text-light);
+}
+
+.zone-header.threat-high {
+  background-color: var(--army-red);
+}
+
+.zone-header.threat-medium {
+  background-color: #ff9800;
+}
+
+.zone-header.threat-critical {
+  background-color: #d32f2f;
+}
+
+.zone-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.threat-badge {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.zone-details {
+  padding: 1rem;
+}
+
+.section-label {
+  color: var(--army-brown);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.crime-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.crime-tag {
+  background-color: var(--army-green-light);
+  color: var(--text-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.crime-tag-large {
+  background-color: var(--army-green-light);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.offender-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.offender-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.offender-preview:hover {
+  background-color: #e0e0e0;
+}
+
+.offender-preview-info {
+  flex: 1;
+}
+
+.offender-preview-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.danger-level {
+  display: inline-block;
+  color: var(--text-light);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--border-radius);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.danger-high {
+  background-color: var(--army-red);
+}
+
+.danger-medium {
+  background-color: #ff9800;
+}
+
+.danger-critical {
+  background-color: #d32f2f;
+}
+
+/* Patrol card */
+.patrol-header {
+  background-color: var(--army-green-dark);
+  color: var(--text-light);
+  padding: 1rem;
+}
+
+.patrol-title {
+  margin-bottom: 0.25rem;
+}
+
+.badge-number {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.patrol-details {
+  padding: 1rem;
+}
+
+.team-avatars {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.team-avatar-container {
+  position: relative;
+}
+
+.team-avatar {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--army-green);
+  color: var(--text-light);
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-large);
+}
+
+.modal-content {
+  padding: 0;
+}
+
+.modal-header {
+  background-color: var(--army-green-dark);
+  color: var(--text-light);
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.modal-header.threat-high,
+.modal-header.danger-high {
+  background-color: var(--army-red);
+}
+
+.modal-header.threat-medium,
+.modal-header.danger-medium {
+  background-color: #ff9800;
+}
+
+/* Record2.css - US Army Theme for Incident Tracker */
+
+/* Base styles and variables */
+:root {
+  --army-green-dark: #4b5320;
+  --army-green: #5a6324;
+  --army-green-light: #6b7a2d;
+  --army-tan: #c6b89e;
+  --army-tan-light: #d8cdb6;
+  --army-brown: #5d4c41;
+  --army-red: #8b0000;
+  --army-yellow: #ffd700;
+  --army-blue: #1a3c5e;
+  --text-light: #f5f5f5;
+  --text-dark: #212121;
+  --shadow-standard: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-large: 0 6px 12px rgba(0, 0, 0, 0.4);
+  --border-radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--army-tan-light);
+  color: var(--text-dark);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Main container */
+.incident-tracker-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: url("/api/placeholder/1600/200") no-repeat top center;
+  background-size: contain;
+  background-color: var(--army-tan-light);
+}
+
+/* Header styles */
+.header-section {
+  background-color: var(--army-green-dark);
+  color: var(--text-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-standard);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-shield {
+  color: var(--army-yellow);
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.date-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Button styles */
+button {
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-standard);
+  text-transform: uppercase;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-report {
+  background-color: var(--army-blue);
+  color: var(--text-light);
+}
+
+.btn-emergency {
+  background-color: var(--army-red);
+  color: var(--text-light);
+}
+
+.btn-read-more,
+.btn-view-zone,
+.btn-view-patrol {
+  background-color: var(--army-green);
+  color: var(--text-light);
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-request-backup {
+  background-color: var(--army-red);
+  color: var(--text-light);
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.btn-cancel {
+  background-color: var(--army-tan);
+  color: var(--text-dark);
+}
+
+.btn-request {
+  background-color: var(--army-green);
+  color: var(--text-light);
+}
+
+.btn-record,
+.btn-alert,
+.btn-print {
+  flex: 1;
+  background-color: var(--army-green);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.btn-alert {
+  background-color: var(--army-red);
+}
+
+.btn-patrol-routes,
+.btn-incident-markers,
+.btn-print-map {
+  background-color: var(--army-green-light);
+  color: var(--text-light);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  box-shadow: none;
+  padding: 0.5rem;
+}
+
+.close-button:hover {
+  color: var(--army-yellow);
+  box-shadow: none;
+}
+
+/* Dashboard container */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .dashboard-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Section styles */
+.incidents-section,
+.red-zones-section,
+.patrol-section {
+  background-color: var(--army-tan);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-standard);
+}
+
+.section-title {
+  color: var(--army-green-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid var(--army-green-dark);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon-alert,
+.icon-users {
+  color: var(--army-red);
+}
+
+/* Card styles */
+.incident-card,
+.red-zone-card,
+.patrol-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-standard);
+  margin-bottom: 1.5rem;
+}
+
+/* Incident card */
+.incident-header {
+  padding: 1rem;
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incident-header.resolved {
+  background-color: var(--army-green);
+}
+
+.incident-header.active {
+  background-color: var(--army-red);
+}
+
+.incident-title {
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+}
+
+.icon-check {
+  color: var(--army-yellow);
+}
+
+.incident-details {
+  padding: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.detail-icon {
+  color: var(--army-green);
+}
+
+.officer-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.officer-label {
+  margin-bottom: 0.5rem;
+  color: var(--army-brown);
+}
+
+.officer-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.officer-icon {
+  color: var(--army-blue);
+}
+
+/* CCTV badge */
+.cctv-badge {
+  display: inline-block;
+  background-color: var(--army-blue);
+  color: var(--text-light);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Red Zone card */
+.zone-header {
+  padding: 1rem;
+  color: var(--text-light);
+}
+
+.zone-header.threat-high {
+  background-color: var(--army-red);
+}
+
+.zone-header.threat-medium {
+  background-color: #ff9800;
+}
+
+.zone-header.threat-critical {
+  background-color: #d32f2f;
+}
+
+.zone-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.threat-badge {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.zone-details {
+  padding: 1rem;
+}
+
+.section-label {
+  color: var(--army-brown);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.crime-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.crime-tag {
+  background-color: var(--army-green-light);
+  color: var(--text-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.crime-tag-large {
+  background-color: var(--army-green-light);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.offender-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.offender-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.offender-preview:hover {
+  background-color: #e0e0e0;
+}
+
+.offender-preview-info {
+  flex: 1;
+}
+
+.offender-preview-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.danger-level {
+  display: inline-block;
+  color: var(--text-light);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--border-radius);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.danger-high {
+  background-color: var(--army-red);
+}
+
+.danger-medium {
+  background-color: #ff9800;
+}
+
+.danger-critical {
+  background-color: #d32f2f;
+}
+
+/* Patrol card */
+.patrol-header {
+  background-color: var(--army-green-dark);
+  color: var(--text-light);
+  padding: 1rem;
+}
+
+.patrol-title {
+  margin-bottom: 0.25rem;
+}
+
+.badge-number {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.patrol-details {
+  padding: 1rem;
+}
+
+.team-avatars {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.team-avatar-container {
+  position: relative;
+}
+
+.team-avatar {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--army-green);
+  color: var(--text-light);
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-large);
+}
+
+.modal-content {
+  padding: 0;
+}
+
+.modal-header {
+  background-color: var(--army-green-dark);
+  color: var(--text-light);
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.modal-header.threat-high,
+.modal-header.danger-high {
+  background-color: var(--army-red);
+}
+
+.modal-header.threat-medium,
+.modal-header.danger-medium {
+  background-color: #ff9800;
+}
+
+.modal-header.threat-critical,
+.modal-header.danger-critical {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.modal-header .modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.modal-header .close-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.modal-header .close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-header .threat-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: 2.5rem;
+}
+
+.modal-header .threat-icon {
+  flex-shrink: 0;
+}
+
+.modal-header .danger-level {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: 2.5rem;
+}
+
+/* Threat level and danger level colors for other elements */
+.threat-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--army-green);
+  color: white;
+}
+
+.danger-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+}
+
+.danger-badge.danger-critical,
+.danger-level.danger-critical {
+  background-color: #d32f2f;
+}
+
+.danger-badge.danger-high,
+.danger-level.danger-high {
+  background-color: var(--army-red);
+}
+
+.danger-badge.danger-medium,
+.danger-level.danger-medium {
+  background-color: #ff9800;
+}
+
+.danger-badge.danger-low,
+.danger-level.danger-low {
+  background-color: #4caf50;
+}
+
+/* Modal content styles */
+.modal-content .tabs-container {
+  padding: 1.5rem;
+}
+
+.modal-content .tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.modal-content .tab {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  transition: color 0.2s, border-bottom 0.2s;
+  white-space: nowrap;
+}
+
+.modal-content .tab.active {
+  color: var(--army-green);
+  border-bottom: 2px solid var(--army-green);
+}
+
+.modal-content .tab:hover:not(.active) {
+  color: var(--text-dark);
+}
+
+.modal-content .tab-content {
+  min-height: 300px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-container {
+    max-width: 95%;
+  }
+
+  .modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modal-header .threat-indicator,
+  .modal-header .danger-level {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.75rem;
+  }
+
+  .modal-header .close-button {
+    top: 0.75rem;
+  }
+}

@@ -1,0 +1,773 @@
+/* Base Styles */
+:root {
+  --army-green: #4b5320;
+  --army-dark: #2c2f1b;
+  --army-light: #5d6331;
+  --army-tan: #c5bfa0;
+  --army-brown: #8b7b55;
+  --alert-red: #b32d2d;
+  --alert-orange: #d2691e;
+  --alert-yellow: #cda434;
+  --accent-blue: #3a5e8c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+  background: var(--army-dark);
+  color: #f5f5f5;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1547027998-59fc99ead0a8?q=80&w=1740&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.app::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 47, 27, 0.85);
+  z-index: 0;
+}
+
+/* Header Styles */
+.header {
+  background: var(--army-dark);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10;
+  border-bottom: 3px solid var(--army-light);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--army-tan);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.main-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: var(--army-tan);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+  background-color: var(--army-light);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Main Content Layout */
+.main-content {
+  display: flex;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Map Styles */
+.map-container {
+  flex: 3;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--army-light);
+  /* Ensure full height but cap it so it doesn't blow up too large */
+  height: calc(100vh - 140px);
+  max-height: 80vh;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  color: white;
+  right: 10px;
+  z-index: 1000;
+  background: rgba(44, 47, 27, 0.8);
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--army-light);
+}
+
+.map-type-selector {
+  padding: 0.5rem;
+  background-color: var(--army-dark);
+  color: var(--army-tan);
+  border: 1px solid var(--army-light);
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Marker Icon Styles */
+.high-threat-marker {
+  filter: hue-rotate(320deg) brightness(1.5) !important;
+}
+
+.medium-threat-marker {
+  filter: hue-rotate(30deg) brightness(1.5) !important;
+}
+
+.low-threat-marker {
+  filter: hue-rotate(60deg) brightness(1.5) !important;
+}
+
+/* Popup Styles */
+.enhanced-popup .leaflet-popup-content-wrapper {
+  background: rgba(44, 47, 27, 0.9);
+  color: var(--army-tan);
+  border: 2px solid var(--army-light);
+  border-radius: 6px;
+  /* Increased max-width for better readability */
+  max-width: 400px;
+  font-size: 1rem; /* Larger base font */
+}
+
+.enhanced-popup .leaflet-popup-tip {
+  background: var(--army-dark);
+}
+
+.threat-popup h3 {
+  /* Increased font size */
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: white;
+  border-bottom: 1px solid var(--army-light);
+  padding-bottom: 0.5rem;
+}
+
+.threat-popup h4 {
+  font-size: 1rem;
+  margin: 0.75rem 0 0.25rem;
+  color: white;
+}
+
+.severity-HIGH {
+  color: var(--alert-red);
+  font-weight: bold;
+}
+
+.severity-MEDIUM {
+  color: var(--alert-orange);
+  font-weight: bold;
+}
+
+.severity-LOW {
+  color: var(--alert-yellow);
+  font-weight: bold;
+}
+
+.threat-sources,
+.ai-analysis,
+.nearby-officers {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(93, 99, 49, 0.4);
+}
+
+.nearby-officers ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.officer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(75, 83, 32, 0.5);
+  border-radius: 4px;
+}
+
+.officer-info p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.assign-button,
+.reassign-button {
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.assign-button:hover,
+.reassign-button:hover {
+  background-color: #4a6e9c;
+  transform: scale(1.05);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 300px;
+  max-width: 400px;
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar > div {
+  background: rgba(44, 47, 27, 0.85);
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--army-light);
+}
+
+/* Control Panel Styles */
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.control-panel h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: white; /* Improved contrast */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--army-light);
+  padding-bottom: 0.5rem;
+}
+
+/* Updated button styling for better visibility and size */
+.control-button {
+  background: var(--army-green);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.2rem; /* Increased padding for larger button */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem; /* Larger font */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.control-button:hover {
+  background: var(--army-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.control-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.control-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.detect-button {
+  background: var(--accent-blue);
+}
+
+.detect-button:hover {
+  background: #4a6e9c;
+}
+
+.clear-button {
+  background: var(--alert-red);
+}
+
+.clear-button:hover {
+  background: #c43b3b;
+}
+
+/* Data Sources Styles */
+.data-sources {
+  margin-top: 1rem;
+}
+
+.data-source-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(75, 83, 32, 0.3);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.data-source-item:hover {
+  background: rgba(75, 83, 32, 0.5);
+}
+
+.data-source-toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-right: 0.75rem;
+}
+
+.data-source-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.data-source-toggle .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.data-source-toggle .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.data-source-toggle input:checked + .slider {
+  background-color: var(--accent-blue);
+}
+
+.data-source-toggle input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.data-source-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white; /* Improved contrast */
+}
+
+/* Sidebar Buttons */
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-button {
+  background: var(--army-green);
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  font-size: 1rem; /* Larger font for sidebar buttons */
+}
+
+.sidebar-button:hover {
+  background: var(--army-light);
+  transform: translateX(5px);
+  border-color: var(--army-tan);
+}
+
+.sidebar-button i {
+  font-size: 1.1rem;
+}
+
+/* Threat List Styles */
+.threat-list {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.threat-list h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: white; /* Improved contrast */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--army-light);
+  padding-bottom: 0.5rem;
+}
+
+.threat-item {
+  padding: 0.75rem;
+  border-radius: 4px;
+  background: rgba(75, 83, 32, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--army-light);
+}
+
+.threat-item:hover {
+  background: rgba(75, 83, 32, 0.5);
+  transform: translateX(5px);
+}
+
+.threat-item.selected {
+  background: rgba(75, 83, 32, 0.7);
+  border-left-color: var(--army-tan);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.threat-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.threat-item-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.threat-high {
+  color: var(--alert-red);
+}
+
+.threat-medium {
+  color: var(--alert-orange);
+}
+
+.threat-low {
+  color: var(--alert-yellow);
+}
+
+.threat-item-time {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.threat-item-location {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+/* Threat Detail Panel */
+.threat-detail-panel {
+  position: relative;
+}
+
+.threat-detail-panel h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: white; /* Improved contrast */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--army-light);
+  padding-bottom: 0.5rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  color: var(--army-tan);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.threat-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.threat-detail-content p {
+  font-size: 0.9rem;
+}
+
+.threat-detail-content strong {
+  color: var(--army-tan);
+}
+
+.assigned-officer-detail {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(75, 83, 32, 0.5);
+  border-radius: 4px;
+  border-left: 4px solid var(--accent-blue);
+}
+
+.assigned-officer-detail h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.assigned-officer-detail p {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Error Message */
+.error-message {
+  padding: 0.75rem;
+  background: rgba(179, 45, 45, 0.3);
+  border-radius: 4px;
+  border-left: 4px solid var(--alert-red);
+  color: #f8d7da;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Footer Styles */
+.footer {
+  background: var(--army-dark);
+  padding: 1rem 2rem;
+  text-align: center;
+  color: var(--army-tan);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  border-top: 3px solid var(--army-light);
+  position: relative;
+  z-index: 10;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply animations to elements */
+.threat-item.high-threat {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.control-panel,
+.threat-list,
+.sidebar-buttons,
+.threat-detail-panel {
+  animation: fadeIn 0.5s ease;
+}
+
+.sidebar-button {
+  animation: slideInRight 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.sidebar-button:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.sidebar-button:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.sidebar-button:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.sidebar-button:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.sidebar-button:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.high-threat-marker {
+  animation: blink 1.5s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(44, 47, 27, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--army-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--army-tan);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .map-container,
+  .sidebar {
+    width: 100%;
+    max-width: none;
+  }
+
+  .map {
+    height: 50vh;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .main-nav {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+}
+
+/* Improve Text Contrast for Map Background */
+.leaflet-container {
+  background-color: var(--army-dark) !important;
+}
